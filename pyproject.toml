@@ -12,6 +12,7 @@ readme = "README-2-0.md"
 [tool.poetry.dependencies]
 python = ">=3.13"
 azure-functions = "*"
+azure-durable-functions = "*"
 structlog = "*"
 
 [tool.poetry.group.local.dependencies]
