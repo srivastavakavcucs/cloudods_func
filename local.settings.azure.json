@@ -1,0 +1,21 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
+    "PYTHON_ENABLE_OPENTELEMETRY": "0",
+    "TELEMETRY_TARGET": "azure",
+    "LOGGING_TARGET": "azure",
+    "APPLICATIONINSIGHTS_CONNECTION_STRING": "<your-connection-string-from-azure-portal>",
+    "OTEL_SERVICE_NAME": "ods-sample-function",
+    "LOG_LEVEL": "INFO",
+    "LOG_DIR": ".logs",
+    "LOG_FILE_NAME": "ods-sample-function.log"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*",
+    "CORSCredentials": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:$AzuriteBlobPort/devstoreaccount1;QueueEndpoint=http://127.0.0.1:$AzuriteQueuePort/devstoreaccount1;TableEndpoint=http://127.0.0.1:$AzuriteTablePort/devstoreaccount1;",
+    "AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
+    "PYTHON_ENABLE_OPENTELEMETRY": "0",
+    "TELEMETRY_TARGET": "local",
+    "LOGGING_TARGET": "local",
+    "OTEL_EXPORTER_OTLP_ENDPOINT": "http://localhost:4318",
+    "OTEL_SERVICE_NAME": "ods-sample-function",
+    "LOG_LEVEL": "DEBUG",
+    "LOG_DIR": ".logs",
+    "LOG_FILE_NAME": "ods-sample-function.log",
+    "DATABASE_URL": ""
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*",
+    "CORSCredentials": false
+  }
+}
