@@ -1,0 +1,34 @@
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "cloudods-func"
+version = "0.1.0"
+description = "Azure Function for CloudODS"
+authors = ["VyStar Cloud ODS Team"]
+readme = "README-2-0.md"
+
+[tool.poetry.dependencies]
+python = ">=3.13"
+azure-functions = "*"
+structlog = "*"
+
+[tool.poetry.group.local.dependencies]
+artifacts-keyring = "*"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "*"
+pytest = "*"
+pytest-cov = "*"
+
+[[tool.poetry.source]]
+name = "ado"
+url = "https://vcuvs.pkgs.visualstudio.com/CloudODS/_packaging/PYTHON-VCU-ITD/pypi/simple/"
+
+[tool.ruff]
+line-length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

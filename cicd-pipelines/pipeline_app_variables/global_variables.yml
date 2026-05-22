@@ -1,0 +1,79 @@
+#This file contains app specific variables for CICD Pipeline 2.0
+#The variables names CANNOT change, but their respective values should be updated as necessary for an application
+
+#Application Based Values
+variables:
+  app_name                            : "CloudODS_Func"                                              # Must match the Azure Function App resource name
+  project_type                        : "python"                                                     # Maps directly to jobs-build-pipeline-python.yml in pipeline-templates
+  python_version                      : "3.13"                                                       # Used by UsePythonVersion@0 — CICD team must confirm 3.13.x is on the scale set agents
+  target_file_path                    : "."                                                          # Path to target folder if not at root
+  target_file_name                    : "poetry.lock"                                           # Used by Snyk as the SCA scan target — generated from uv.lock at scan time
+  auto_generate_release_note          : "false"
+  environment_list                    : "dev,test,prod"
+  artifact_feed                        : "CloudODS/PYTHON-VCU-ITD"                                   # Name of Azure Artifacts feed for pip authentication in build pipeline — must be created and accessible by project
+
+#Application Build Pipeline
+  publish_artifact                    : "true"
+  build_pipeline                      : "CloudODS_Func-bodm-cicd-pipeline"                          # Pipeline name — must not change (used for tracking)
+  build_artifact_type                 : "zip"
+  sonar_project_key                   : "CloudODS-CloudODS_Func-key"
+
+# ArtifactFeed publishing variables (only change if you need package feed publishing)
+  library_publish                        : "false"
+  library_publish_path                   : "feed_path_placeholder"
+  library_publish_package_name           : "library-name-placeholder"
+  library_publish_package_desc           : "description: This gives more information on package."
+  library_publish_version_opt            : "patch"
+
+  tf_backend_resource_group_name         : "rg-devopstesting-opseng01-eu-vy"
+  tf_backend_storage_account_name        : "devopsandboxstesting"
+  tf_backend_container_name             : "tfstate"
+
+
+#Application Deployment Pipeline
+  deployMethod                        : "arm"                                                       # arm = Azure App Service / Function Apps
+  #deploy_strategy                     : ""                                                         # Not applicable for ARM deployment
+
+#Temporary definition of project name on Service Connections to account for projects with a space
+  arm_wif_sc_project_name             : "CloudODS"                                                  # Must match ADO project name — used to build service connection: sc-<env>-wif-CloudODS
+  service_fabric_sc_project_name      : "CloudODS"
+
+#Azure Service Connection for Storage Account Subscription
+  appdev-SA-connection                   : "dev01-vy-wif" # this should deploy a to dev 
+  dev-SA-connection                      : "dev01-vy-wif"
+  test-SA-connection                     : "test01-vy-wif"
+  stage-SA-connection                    : "uat01-vy-wif"
+  uat-SA-connection                      : "uat01-vy-wif"
+  prod-SA-connection                     : "prod01-vy-wif"
+
+#Azure ARM Service Connections
+  appdev-ARMDeploy-connection            : "appdev01-vy-wif"
+  dev-ARMDeploy-connection               : "dev01-vy-wif"
+  test-ARMDeploy-connection              : "test01-vy-wif"
+  stage-ARMDeploy-connection             : "uat01-vy-wif"
+  uat-ARMDeploy-connection               : "uat01-vy-wif"
+  prod-ARMDeploy-connection              : "prod01-vy-wif"
+
+#Azure Service Fabric Connections - Not applicable for Azure Functions (ARM deployment) 
+# This is needed for the build to be successful, even though we do not use Service Fabirc
+  appdev-SFDeploy-connection            : "appdev01-vy"
+  dev-SFDeploy-connection               : "dev01-vy"
+  test-SFDeploy-connection              : "test01-vy"
+  stage-SFDeploy-connection             : "uat01-vy"
+  uat-SFDeploy-connection               : "uat01-vy"
+  prod-SFDeploy-connection              : "prod01-vy"
+
+#Azure Service Connection for Key Vault Subscription
+  appdev-KEY_VAULT_SUB                   : "appdev01-vy-wif"
+  dev-KEY_VAULT_SUB                      : "dev01-vy-wif"
+  test-KEY_VAULT_SUB                     : "test01-vy-wif"
+  stage-KEY_VAULT_SUB                    : "uat01-vy-wif"
+  uat-KEY_VAULT_SUB                      : "uat01-vy-wif"
+  prod-KEY_VAULT_SUB                     : "prod01-vy-wif"
+
+#Mail Notification
+  notify_emails                       : "placeholder@vystarcu.org"
+  cc_emails                           : "placeholder@vystarcu.org"
+  bcc_emails                          : "placeholder@vystarcu.org"
+  notify_build_completion             : "false"
+  notify_nonprod_deployment           : "false"

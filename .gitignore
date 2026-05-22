@@ -1,0 +1,26 @@
+# Python
+.python_packages/
+__pycache__/
+*.pyc
+*.pyo
+.env
+local.settings.json
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Build artifacts
+*.zip
+*.egg-info/
+**/*.egg-info/
+dist/
+build/
+
+# Test cache
+.pytest_cache/
+
+.claude/
+
+.coverage

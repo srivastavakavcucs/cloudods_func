@@ -1,0 +1,39 @@
+trigger:
+  branches:
+    include:
+      - feature/*
+      - nonprod
+      - main
+  paths:
+    include:
+      - '**'
+    exclude:
+      - cicd-pipelines/**
+
+parameters:
+  - name: scale_set_agents
+    displayName: Select DevOps ScaleSet Agent
+    type: string
+    default: DevOps-AzurePipelines-Ubuntu2204
+    values:
+      - DevOps-AzurePipelines-Ubuntu2204
+      - DevOps-AzurePipelines-windows2022
+
+variables:
+  - group: pipeline-2-0-vars
+  - template: pipeline_app_variables/global_variables.yml
+
+resources:
+  repositories:
+    - repository: pipeline-templates
+      type: git
+      name: CICD_Pipelines/pipeline-templates
+      ref: "refs/heads/feature/653316-python-pipeline"   # switch to a tag once the branch merges to main
+
+extends:
+  template: templates/standard-flow/extends/extends-initialize-pipeline.yml@pipeline-templates
+  parameters:
+    scale_set_agents: ${{ parameters.scale_set_agents }}
+    project_type: ${{ variables.project_type }}
+    APP_NAME: ${{ variables.app_name }}
+    environment_list: ${{ variables.environment_list }}
